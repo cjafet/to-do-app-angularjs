@@ -1,0 +1,99 @@
+<div class="navbar-fixed">
+    <nav>
+        <div class="container">
+            <a class="brand-logo" href="/">Crossover Todo</a>
+            <a href="#" data-activates="mobile-nav" class="button-collapse right"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">           
+                <li style="margin-right: 10px;">Welcome back, <span class="user">{{ user }}</span>!</a></li>
+                <li class="active"><a href="" ng-click="logout()">Logout</a></li>
+            </ul>
+            <ul id="mobile-nav" class="side-nav right-aligned" style="right: -250px;">
+                <li><a href=""></a></li>
+                <li class="active"><a href="" ng-click="logout()">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+    <div class="search-bar container">
+    <div class="row">
+        <div class="col s12" style="margin-bottom:0;margin-top:10px;">
+            <form id="todo-form" ng-submit="addItem(todo)">
+                <div class="input-field">
+                    <input placeholder="Add ToDo Title" required="required" autocomplete="off" ng-model="todo.title" style="width:50%; height:45px;">
+                     <input placeholder="Add ToDo Description" required="required" autocomplete="off" ng-model="todo.description" style="width: 50%;height: 45px;position: absolute;top: 0px;right: 0px;">
+                    <i class="material-icons" style="top: 3px;right: 4px;color: #fff;position: absolute;font-size: 36px;cursor: pointer;" ng-click="addItem(todo)">add_box</i>
+                    <p ng-if="message" style="position: absolute;top: 23px;left: 74%;font-weight: 900;background-color: rgba(129, 52, 199, 0.89);color: white;padding: 10px;border-radius: 8px;">{{ message }}</p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+    <div class="container">
+	    <div class="row" style="margin-bottom:0;">
+	        <div class="col s12" style="margin-bottom:0;">
+	        		<ul style="display:inline-flex;">
+		        		<li>
+		        			<ul style="display:inline-flex;margin-right:10px;">
+		        				<li>
+		        					<div id="completed" style="background-color:#4caf50;width:20px;height:20px;border-radius:4px;margin-right:5px;"></div>
+		        				</li>
+		        				<li>Completed</li>
+		        			</ul>
+		        		</li>
+		        		<li>
+		        			<ul style="display:inline-flex;">	        					
+		        				<li>
+		        					<div id="progress" style="background-color:#0c6ec2;width:20px;height:20px;border-radius:4px;margin-right:5px;"></div>
+		        				</li>
+		        				<li>InProgress</li>
+		        			</ul>
+		        		<li>
+	        		</ul>
+	        	</div>
+	        </div>
+	    </div>
+	</div>
+    <div class="container">
+    <div class="row">
+        <div class="col s12">
+			<ul style="width:62%;">
+			<li ng-if="empty" style="display:flex;padding-top:10px;" class="nobox"><p class="validation">No results found.</p></li>
+			<li ng-if="albums" style="display:flex;padding-top:10px;" class="nobox"><p class="numberof">Showing results.</p></li>
+
+			<div id="grid" style="float:left;margin-right:20px;" ondrop="drop(event)" ondragover="allowDrop(event)">
+				<li id="album-item" ng-repeat="item in items" ng-if="item.status == 'completed'" style="list-style:none;margin-bottom:10px;padding-bottom:10px;" draggable="true" ondragstart="drag(event)" class="album-item">
+					<div style="position:relative;width:100%;max-width:349px;min-width:349px;height:148px;background-color:#4caf50;padding:20px;color: #fff;border-radius: 4px;">
+						<label ng-click="visible = !visible" ng-hide="visible" class="title">{{ item.title }}</label>
+						<input type="text" value="{{ item.title }}" ng-show="visible" ng-model="item.title" class="input"/>
+						<label ng-click="visible = !visible" ng-hide="visible" class="description"><p style="margin: 0;">{{ item.description | stripTags }}</p></label>
+						<input type="text" value="{{ item.description | stripTags }}" ng-show="visible" ng-model="item.description" class="input-desc" />
+						<label class="author"> [ {{ item.author.username }} ]</label><br/>
+						<input type="hidden" value="{{ item._id }}" ng-model="item._id" class="input-desc" />
+						<input type="hidden" value="{{ item.status }}" ng-model="item.status" class="input-desc" />
+						<input type="hidden" value="{{ item.author }}" ng-model="item.author" class="input-desc" />
+						<button id="update2" type="submit" class="button" ng-click="visible = !visible; update(item)" ng-show="visible">update</button>
+						<i class="material-icons" style="position: absolute;top: 12px;left: 314px;cursor:pointer;" ng-click="delete(item)">highlight_off</i>
+					</div>
+				</li>
+			
+			</div>
+			<div id="grid" style="float:left;">
+				<li id="album-item" ng-repeat="item in items" ng-if="item.status == 'notCompleted'" style="list-style:none;margin-bottom:10px;padding-bottom:10px;">
+					<div style="position:relative;width:100%;max-width:349px;min-width:349px;height:148px;background-color:#0c6ec2;padding:20px;color: #fff;border-radius: 4px;">
+						<label ng-click="visible = !visible" ng-hide="visible" class="title">{{ item.title }}</label>
+						<input type="text" value="{{ item.title }}" ng-show="visible" ng-model="item.title" class="input"/>
+						<label ng-click="visible = !visible" ng-hide="visible" class="description"><p style="margin: 0;">{{ item.description | stripTags }}</p></label>
+						<input type="text" value="{{ item.description | stripTags }}" ng-show="visible" ng-model="item.description" class="input-desc" />
+						<label class="author"> [ {{ item.author.username }} ]</label><br/>
+						<input type="hidden" value="{{ item._id }}" ng-model="item._id" class="input-desc" />
+						<input type="hidden" value="{{ item.status }}" ng-model="item.status" class="input-desc" />
+						<input type="hidden" value="{{ item.author }}" ng-model="item.author" class="input-desc" />
+						<button id="update" type="submit" class="button" ng-click="visible = !visible; update(item)" ng-show="visible">update</button>
+						<i class="material-icons" style="position: absolute;top: 12px;left: 314px;cursor:pointer;" ng-click="delete(item)">highlight_off</i>
+					</div>
+				</li>
+			</div>
+		</ul>
+	</div>
+</div>
+</div>

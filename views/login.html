@@ -1,0 +1,42 @@
+<div class="navbar-fixed">
+    <nav>
+        <div class="container">
+            <a class="brand-logo" href="/">Crossover Todo</a>
+            <a href="#" data-activates="mobile-nav" class="button-collapse right"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">           
+                <li style="margin-right: 10px;"></a></li>
+                <li class="active"></li>
+            </ul>
+            <ul id="mobile-nav" class="side-nav right-aligned" style="right: -250px;">
+                <li><a href=""></a></li>
+                <li class="active"></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+    <div class="container">
+	    <div class="row">
+	        <div class="col s12" style="border: 1px solid rgba(128, 128, 128, 0.2);padding: 50px;background-color: rgba(177, 220, 251, 0.09);">
+				<section class="login" style="width:40%;margin:0 auto;">
+	
+					<p class="text-intro">
+					<p class="message" ng-show="message" style="margin:10px;">{{ message }}</p>
+					</p>
+
+					<form name="register" ng-submit="login(user)" novalidate>
+						<div class="input-field">
+							<input type="text" name="email" placeholder="Enter your e-mail" ng-model="user.email" ng-required="true" class="user-login">
+							<input type="password" name="password" placeholder="Enter your password" ng-model="user.password" ng-required="true" class="user-login">
+						</div>
+						
+						<button type="submit" class="btn" style="margin:10px;height: 35px;border-radius: 4px;">Login</button>
+						<p ng-show="user.first"><a href="#" ng-click="logout()">sign out</a></p>
+					</form>
+
+				</section>
+
+			</div>
+		</div>
+	</div>
+

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="todo">
+<head>
+  <meta charset="utf-8">
+  <title>Crossover :: To-Do List App</title>
+  <meta name="description" content="Spotify API with AngularJS">
+  <meta name="author" content="angularjs, api, spotify">
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" type="text/css" href="libs/fancybox/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="css/materialize/css/materialize.css">
+  <link rel="stylesheet" href="css/codrops/css/cs-select.css">
+  <link rel="stylesheet" href="css/codrops/css/cs-skin-border.css">
+  
+  <!-- AngularJS -->
+  <script src="libs/angularjs/angular.min.js"></script>
+  <script src="libs/angularjs/angular-route.js"></script>
+  <script src="libs/angularjs/angular-resource.js"></script>
+  <!-- Module -->
+  <script src="js/app.js"></script>
+  <!-- Interceptors -->
+  <script src="js/interceptors/interceptor.js"></script>
+  <!-- Filters -->
+  <script src="js/filters/filters.js"></script>
+  <!-- Factories -->
+  <script src="js/factories/crud.js"></script>
+  <script src="js/factories/listapi.js"></script>
+  <script src="js/factories/authentication.js"></script>
+  <!-- Controllers -->
+  <script src="js/controllers/login.js"></script>
+  <script src="js/controllers/list.js"></script>
+
+
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+</head>
+
+<body ng-cloak>
+
+	<header></header>
+
+	<main ng-view></main>
+
+	<footer><p></p></footer>
+
+<script src="libs/jquery/jquery-3.2.1.min.js"></script>
+<script src="libs/fancybox/jquery.fancybox.min.js"></script>
+<script src="https://use.fontawesome.com/e6f9d316ac.js"></script>
+<script>
+// function allowDrop(ev) {
+//     ev.preventDefault();
+// }
+
+// function drag(ev) {
+//     ev.dataTransfer.setData("text", ev.target.id);
+// }
+
+// function drop(ev) {
+//     ev.preventDefault();
+//     var data = ev.dataTransfer.getData("text");
+//     ev.target.appendChild(document.getElementById(data));
+// }
+// function dragstart_handler(ev) {
+//   // Set the drag effect to copy
+//   ev.dataTransfer.dropEffect = "move";
+// }
+</script>
+</body>
+</html>
